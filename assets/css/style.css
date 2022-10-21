@@ -1,0 +1,22 @@
+th{
+  color: aliceblue;  
+  font-size: 25px;
+};
+
+.label{
+    color: aliceblue;  
+    font-size: 25px;
+  };
+
+  h4 .name {
+    color: aliceblue;
+    };
+
+    .li:hover {
+      box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    }
+
+    #mynetwork {
+      border: 1px solid lightgray;
+      background-color: #333333;
+    }

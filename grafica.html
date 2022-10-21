@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Vis Network | Node Styles | Circular Images</title>
+
+    
+    <style type="text/css">
+      body {
+        font: 10pt arial;
+      }
+      #mynetwork {
+        width: 800px;
+        height: 800px;
+        border: 1px solid lightgray;
+        background-color: #333333;
+      }
+    </style>
+
+    <script type="text/javascript"src="./assets/js/vis-network.min.js.js"></script>
+    <script type="text/javascript" src="./assets/js/ven.js"></script>
+
+  </head>
+
+  <body onload="draw()">
+    <div id="mynetwork"></div>
+    <select id="producto" name="producto" onchange="ShowSelected();">
+      <option value="12">Texto One</option>
+      <option value="13">Texto Two</option>
+      </select>
+  </body>
+  
+</html>

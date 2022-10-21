@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+
+    <title>- Soccer Studio - </title>
+
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
+
+    <link rel="stylesheet" href="assets/css/templatemo-training-studio.css">
+
+    <link rel="stylesheet" href="./assets/css/style.css" />
+<!--graficas-->
+<script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
+      <script src="https://cdn.anychart.com/releases/v8/js/anychart-ui.min.js"></script>
+      <script src="https://cdn.anychart.com/releases/v8/js/anychart-exports.min.js"></script>
+      <link href="https://cdn.anychart.com/releases/v8/css/anychart-ui.min.css" type="text/css" rel="stylesheet">
+      <link href="https://cdn.anychart.com/releases/v8/fonts/css/anychart-font.min.css" type="text/css" rel="stylesheet">
+      <script type="text/javascript"src="./assets/js/vis-network.min.js.js"></script>
+    </head>
+    
+    <body onload="draw()">
+    
+    <!-- ***** Preloader Start ***** -->
+    <div id="js-preloader" class="js-preloader">
+      <div class="preloader-inner">
+        <span class="dot"></span>
+        <div class="dots">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+    <!-- ***** Preloader End ***** -->
+    
+    
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="index.html" class="logo">Soccer<em> Studio</em></a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li class="scroll-to-section"><a href="#top" class="active">Inicio</a></li>
+                            <li class="scroll-to-section"><a href="#schedule">Equipo</a></li>
+                            <li class="scroll-to-section"><a href="#our-classes">Estadisticas</a></li>
+                            <li class="scroll-to-section"><a href="#jugados">Juegos</a></li>
+                            <li class="main-button"><a href="#">Iniciar Sesión</a></li>
+                        </ul>        
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+    
+    <section class="section" id="schedule">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="section-heading dark-bg">
+                        <h2>Equipos <em>Participantes</em></h2>
+                        <img src="assets/images/line-dec.png" alt="">
+                        <form id="nuevo-equipo" onsubmit="return validar();">
+                            <div class="form-group">
+                                <label style="color:aliceblue;"for="equipo">Equipo</label>
+                                <input type="text" class="form-control" id="equipo" onkeypress="mayus(this);" />
+                            </div>
+                            <div class="form-group">
+                                <label style="color:aliceblue;" for="puntos">Puntos</label>
+                                <input type="number" class="form-control" id="puntos"  onkeyup="comprobar()"/>
+                            </div>
+                            <div class="form-group">
+                                <label style="color:aliceblue;" for="ima">Imagen</label>
+                                <input type="text" class="form-control" id="ima" />
+                            </div>
+                            <input type="submit" value="Agregar Equipo" id="agregar"/>
+                            <p id="posicion"></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+                </div>
+                <div class="col-lg-10 offset-lg-1">
+                    <div class="schedule-table filtering">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Equipos</th>
+                                    <th>Puntos</th>
+                                    <th>Ima</th>
+                                </tr>
+                            </thead>
+                            <tbody id="equipos-tabla">
+                                
+                            </tbody>
+                        </table>
+                        <button class="btn btn-warning" id = "mostrar-tabla" onclick="miFuncion()">Mostra Tabla</button>
+                       
+                        <div> 
+                            <h4  id="herencia" >Muestra la Herencia</h4>
+                            <p class="messager" id ="mensaje"> </p>
+                           
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- ***** Estadisticas ***** -->
+<section class="section" id="our-classes">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="section-heading">
+                    <h2>Estadisticas <em>Soccer</em></h2>
+                    <img src="assets/images/line-dec.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="row" id="tabs">
+          <div class="col-lg-4">
+            <ul>
+              <li><a href='#tabs-1'><img src="assets/images/tabs-first-icon.png" alt="">México</a></li>
+              <li><a href='#tabs-2'><img src="assets/images/tabs-first-icon.png" alt="">Argentina</a></a></li>
+              <li><a href='#tabs-3'><img src="assets/images/tabs-first-icon.png" alt="">España</a></a></li>
+              <li><a href='#tabs-4'><img src="assets/images/tabs-first-icon.png" alt=""> Venezuela</a></a></li>
+            </ul>
+          </div>
+          <div class="col-lg-8">
+            <section class='tabs-content'>
+                <article id='tabs-1'>
+                    <h4 id="titMex"></h4>
+                    <p id="estMex"></p>
+                    <div  id="graf_mex"></div>
+                </article>
+
+              <article id='tabs-2' >
+                <div class="card"  >
+                    <p id="estArg"></p>
+                    <div  class="tabs-content" id ="gra_arg">
+                    </div>
+                  </div>
+              </article>
+
+              <article id='tabs-3'>
+                <p id="estEsp"></p>
+                <div  class="tabs-content"  id ="graf_esp">
+                </div>
+              </article>
+              <article  id='tabs-4'>
+                <div>
+                    <iframe src="grafica.html" width="450%" height="600px" ></iframe>
+                </div>
+              </article>
+            </section>
+          </div>
+        </div>
+    </div>
+</section>
+    <!-- ***** Filter ***** -->
+
+    <section class="section" id="jugados">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <br>
+                    <br>
+                </div>
+            </div>
+                </div>
+                <div class="col-lg-10 offset-lg-1">
+                    <div class="schedule-table filtering">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th colspan="2">Partidos Jugados</th>
+                                </tr>
+                                <tr>
+                                    <th id="Local">Local</th>
+                                    <th id="Contricantes">Contricantes</th>
+                                </tr>
+                            </thead>
+                            <tbody id="filtrados_tabla">
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th colspan="2">Partidos Pendientes</th>
+                            </tr>
+                            <tr>
+                                <th>Local</th>
+                                <th>Contricantes</th>
+                            </tr>
+                        </thead>
+                        <tbody id="por_realiza">
+                            
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Footer Start ***** -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; 2020 Soccer Studio
+                    
+                    - Update by <a rel="nofollow" class="tm-text-link" target="_parent">Teresita</a></p>
+                    
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+	
+	<script src="http://d3js.org/d3.v3.js" type="text/javascript"></script>
+    
+    <script src="assets/js/jquery-2.1.0.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="assets/js/popper.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+
+    <!-- Plugins -->
+    <script src="assets/js/scrollreveal.min.js"></script>
+    <script src="assets/js/waypoints.min.js"></script>
+    <script src="assets/js/jquery.counterup.min.js"></script>
+    <script src="assets/js/imgfix.min.js"></script> 
+    <script src="assets/js/mixitup.js"></script> 
+    <script src="assets/js/accordions.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@latest/dist/Chart.min.js"></script>
+    
+    <!-- Global Init -->
+    <script src="assets/js/custom.js"></script>
+    <!--Personal-->
+    <script type="text/javascript" src="./assets/js/app.js"></script>
+    <script type="text/javascript" src="./assets/js/mex.js"></script>
+    <script type="text/javascript" src="./assets/js/arg.js"></script>
+    <script type="text/javascript" src="./assets/js/esp.js"></script>
+    <script type="text/javascript" src="./assets/js/body.js"></script>
+    <script type="text/javascript" src="./assets/js/ven.js"></script>
+
+  </body>
+</html>
